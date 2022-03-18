@@ -13,7 +13,10 @@ logger = logging.getLogger('tcpserver')
 
 def process_buffer(buffer):
     """" Split race results data by closing char ([CR]), split received data and
-        if group_num == 00 print prettified one to the console """
+        if group_num == 00 print prettified one to the console
+
+        Exceptions: ValueError if received incorrect data
+        """
     # Check if closing char ([CR]) already in buffer
     while '[CR]' in buffer:
         # Split the buffer by first closing char
